@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% block content %}
+    <h1>Hola, {{ user.nickname }}!</h1>
+    {% for post in posts %}
+    <div><p>{{ post.autor.nickname }} comenta: <b>{{ post.body }}</b></p></div>
+    {% endfor %}
+{% endblock %}
