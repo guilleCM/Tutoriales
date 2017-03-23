@@ -1,3 +1,11 @@
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
+#es el path de nuestro archivo de bbdd
+SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
+#carpeta donde guardaremos los archivos de datos de sqlAlchemy
+
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'hardpwd'
 
