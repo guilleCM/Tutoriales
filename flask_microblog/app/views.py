@@ -84,3 +84,18 @@ def load_user(id):
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/user/<nickname>') #<nickname> lo buscara en la funcion de la vista
+@login_required
+def user(nickname):
+    user = User.query.filter_by(nickname=nickname).first() #si el usuario no esta en la bbdd te devuelve a index
+    if user == None:
+        flash('Usuario %s no encontrado.' % nickname)
+        return redirect(url_for('index'))
+    posts = [
+        {'autor' : user, 'body' : 'Post de prueba 1'},
+        {'autor' : user, 'body' : 'Post de prueba 2'}
+    ]
+    return render_template('user.html',
+                           user=user,
+                           posts=posts)
